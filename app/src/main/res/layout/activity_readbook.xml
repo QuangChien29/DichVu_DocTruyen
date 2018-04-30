@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E3F2FD"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="460dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvTenChuong"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên Chương"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvContent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nội dung"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+    <RelativeLayout
+        android:id="@+id/layoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <ImageButton
+            android:id="@+id/btnNextChapter"
+            android:layout_width="62dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="83dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_keyboard_arrow_right_black_48dp" />
+
+        <ImageButton
+            android:id="@+id/btnBackChapter"
+            android:layout_width="60dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="95dp"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
+
+        <TextView
+            android:id="@+id/tvIdChuong"
+            android:layout_width="50dp"
+            android:layout_height="45dp"
+            android:layout_centerInParent="true"
+            android:text="0"
+            android:textAlignment="center"
+            android:textSize="24sp" />
+
+    </RelativeLayout>
+
+</LinearLayout>

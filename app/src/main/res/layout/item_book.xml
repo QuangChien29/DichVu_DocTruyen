@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="180dp">
+
+    <ImageView
+        android:id="@+id/imgTruyen"
+        android:layout_width="100dp"
+        android:layout_height="150dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignTop="@+id/tvTenTruyen"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tvTenTruyen"
+        android:layout_width="193dp"
+        android:layout_height="30dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="12dp"
+        android:text="Ten Truyen"
+        android:textColor="@android:color/black"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvDescription"
+        android:layout_width="193dp"
+        android:layout_height="75dp"
+        android:layout_alignStart="@+id/tvTenTruyen"
+        android:layout_below="@+id/tvSTT"
+        android:text="Description"
+        android:textSize="12sp"
+        android:textStyle="italic" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="194dp"
+        android:layout_height="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/tvTenTruyen"
+        android:layout_marginBottom="12dp"
+        android:text="Còn tiếp ....." />
+
+    <TextView
+        android:id="@+id/tvTongChuong"
+        android:layout_width="193dp"
+        android:layout_height="20dp"
+        android:layout_alignStart="@+id/tvTenTruyen"
+        android:layout_below="@+id/tvTenTruyen"
+        android:text="Tổng Chương" />
+
+    <TextView
+        android:id="@+id/tvSTT"
+        android:layout_width="31dp"
+        android:layout_height="54dp"
+        android:layout_alignTop="@+id/imgTruyen"
+        android:layout_marginLeft="6dp"
+        android:layout_toEndOf="@+id/imgTruyen"
+        android:text="1"
+        android:textSize="30sp" />
+
+
+</RelativeLayout>
