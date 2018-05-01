@@ -45,7 +45,6 @@ public class DocTruyenActivity extends AppCompatActivity {
 
     private void loadChapter(int id) {
         new readJSON().execute("http://"+ipAddress+"/backend/book/"+idBook+"/chapter/"+id);
-        tvIdChuong.setText(id+"");
     }
 
     private void addEvents() {
@@ -78,7 +77,6 @@ public class DocTruyenActivity extends AppCompatActivity {
         tvContent = findViewById(R.id.tvContent);
         btnNext = findViewById(R.id.btnNextChapter);
         btnBack = findViewById(R.id.btnBackChapter);
-        tvIdChuong = findViewById(R.id.tvIdChuong);
         tvTenChuong = findViewById(R.id.tvTenChuong);
     }
 

@@ -61,15 +61,6 @@
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
 
-        <TextView
-            android:id="@+id/tvIdChuong"
-            android:layout_width="50dp"
-            android:layout_height="45dp"
-            android:layout_centerInParent="true"
-            android:text="0"
-            android:textAlignment="center"
-            android:textSize="24sp" />
-
     </RelativeLayout>
 
 </LinearLayout>

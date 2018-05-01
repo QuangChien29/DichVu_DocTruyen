@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lvBook;
     AdapterListBook adapterListBook;
     ArrayList<Book> listBook;
-    public static String ipAddress ="192.168.1.103:8080";
+    public static String ipAddress ="192.168.1.110:8080";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

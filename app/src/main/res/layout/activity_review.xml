@@ -38,28 +38,14 @@
             <TextView
                 android:id="@+id/tvTenTruyen"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:layout_gravity="top"
                 android:paddingRight="16dp"
                 android:paddingTop="16dp"
                 android:text="Tên truyện"
-                android:textSize="24sp" />
-
-            <TextView
-                android:id="@+id/tvTacGia"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Tác giả"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvTheLoai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Thể Loại"
-                android:textSize="14sp" />
+                android:textColor="@android:color/background_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

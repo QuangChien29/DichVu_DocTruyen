@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.higo.dichvu_doctruyen.R;
 import com.example.higo.dichvu_doctruyen.adapter.TabAdapter;
 import com.example.higo.dichvu_doctruyen.fragment.ChapterFragment;
+import com.example.higo.dichvu_doctruyen.fragment.CommentFragment;
 import com.example.higo.dichvu_doctruyen.fragment.ReviewFragment;
 import com.example.higo.dichvu_doctruyen.models.Book;
 import com.squareup.picasso.Picasso;
@@ -39,13 +40,14 @@ import static com.example.higo.dichvu_doctruyen.MainActivity.ipAddress;
 public class ReviewActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TextView tvTenTruyen,tvTacGia;
+    private TextView tvTenTruyen;
     private ImageView imgReview;
     private String idBook;
-    private Book book;
+    Book book = new Book();
     Button btnDocTruyen;
     ReviewFragment reviewFragment;
     ChapterFragment chapterFragment;
+    CommentFragment commentFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,9 +76,9 @@ public class ReviewActivity extends AppCompatActivity {
         book = new Book();
         reviewFragment = new ReviewFragment();
         chapterFragment = new ChapterFragment();
+        commentFragment = new CommentFragment();
 
         tvTenTruyen =  findViewById(R.id.tvTenTruyen);
-        tvTacGia =  findViewById(R.id.tvTacGia);
         imgReview =  findViewById(R.id.imgReview);
         btnDocTruyen =  findViewById(R.id.btnDocTruyen);
 
@@ -87,6 +89,10 @@ public class ReviewActivity extends AppCompatActivity {
         Bundle bundle = new Bundle();
         bundle.putString("idBook",idBook);
         chapterFragment.setArguments(bundle);
+        commentFragment.setArguments(bundle);
+        bundle.putString("description",book.getName());
+        reviewFragment.setArguments(bundle);
+
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPage(viewPager);
@@ -98,8 +104,11 @@ public class ReviewActivity extends AppCompatActivity {
     private void setupViewPage(ViewPager viewPager) {
             TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
             //chapterFragment.setDataForListView(idBook);
-            adapter.addFragment(reviewFragment, "Review");
-            adapter.addFragment(chapterFragment, "Chapter");
+
+            adapter.addFragment(reviewFragment, "Giới thiệu");
+            adapter.addFragment(chapterFragment, "Danh sách chương");
+            adapter.addFragment(commentFragment,"Đánh giá");
+
             viewPager.setAdapter(adapter);
         }
 
@@ -132,10 +141,8 @@ public class ReviewActivity extends AppCompatActivity {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
 
-            //Toast.makeText(ReviewActivity.this,s,Toast.LENGTH_LONG).show();
             try {
                 JSONObject object = new JSONObject(s);
-//                book = new Book();
                 book.setName(object.getString("name"));
                 //book.setAuthor(object.getString("description"));
                 book.setImgURL(object.getString("imgSrc"));
@@ -143,8 +150,11 @@ public class ReviewActivity extends AppCompatActivity {
                 tvTenTruyen.setText(book.getName());
                 //tvTacGia.setText(book.getAuthor());
                 Picasso.with(ReviewActivity.this).load(book.getImgURL()).into(imgReview);
-
                 reviewFragment.setTextReview(book.getDescription());
+                Bundle bundle = new Bundle();
+                bundle.putString("description",object.getString("description"));
+                reviewFragment.setArguments(bundle);
+
                 //Toast.makeText(ReviewActivity.this,book.getName(),Toast.LENGTH_LONG).show();
             } catch (JSONException e) {
                 e.printStackTrace();

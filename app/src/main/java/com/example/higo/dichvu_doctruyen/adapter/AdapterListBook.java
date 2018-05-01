@@ -9,6 +9,8 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -55,6 +57,9 @@ public class AdapterListBook extends ArrayAdapter<Book>{
         tvSTT.setText(position+1+"");
 
         Picasso.with(context).load(book.getImgURL()).into(imgTruyen);
+
+        Animation animation =  AnimationUtils.loadAnimation(context,R.anim.scale_list);
+        convertView.startAnimation(animation);
         return convertView;
     }
 }
