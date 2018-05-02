@@ -40,7 +40,7 @@ import static com.example.higo.dichvu_doctruyen.MainActivity.ipAddress;
 
 public class DocTruyenActivity extends AppCompatActivity {
     TextView tvContent,tvTenChuong,tvIdChuong;
-    String content,idchapter;
+    String content,chapterNO;
     String idBook ="";
     ImageButton btnNext,btnBack;
     ArrayList<String> dsFont;
@@ -56,7 +56,7 @@ public class DocTruyenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_readbook);
         addControls();
         getDatafromChapterFragment();
-        id =  Integer.parseInt(idchapter);
+        id =  Integer.parseInt(chapterNO);
         loadChapter(id);
         addEvents();
     }
@@ -158,7 +158,7 @@ public class DocTruyenActivity extends AppCompatActivity {
 
     private void getDatafromChapterFragment() {
         Intent intent = getIntent();
-        idchapter=intent.getStringExtra("idchapter");
+        chapterNO=intent.getStringExtra("chapterNO");
         idBook=intent.getStringExtra("idBook");
     }
 

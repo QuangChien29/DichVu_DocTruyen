@@ -63,7 +63,7 @@ public class ReviewActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(ReviewActivity.this, DocTruyenActivity.class);
-            intent.putExtra("idchapter","1");
+            intent.putExtra("chapterNO","1");
             intent.putExtra("idBook",idBook);
             startActivity(intent);
         }

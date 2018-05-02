@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     ListView lvBook;
     AdapterListBook adapterListBook;
     ArrayList<Book> listBook;
-    public static String ipAddress ="192.168.1.110:8080";
+    public static String ipAddress ="192.168.1.120:8080";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,8 +137,78 @@ public class MainActivity extends AppCompatActivity {
                 });
                 dialog.show();
                 break;
-
             }
+            case R.id.menuDK:{
+                final Dialog dialog = new Dialog(MainActivity.this);
+                dialog.setTitle("Đăng Ký");
+                dialog.setContentView(R.layout.dialog_login);
+                final EditText edUsernameDK = dialog.findViewById(R.id.edUsername);
+                final EditText edPasswordDK = dialog.findViewById(R.id.edPassword);
+                Button btnDangKy = (Button)dialog.findViewById(R.id.btnDangKy);
+                Button btnThoatDangKy = (Button)dialog.findViewById(R.id.btnThoatDangKy);
+                btnThoatDangKy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.cancel();
+                    }
+                });
+                btnDangKy.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        final String userName = edUsernameDK.getText().toString();
+                        String password = edPasswordDK.getText().toString();
+                        if(userName.equals("") || password.equals(""))
+                        {
+                            Toast.makeText(MainActivity.this,"Hãy nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+                        }
+                        else
+                        {
+                            User user = new User();
+                            user.setUserName(userName);
+                            user.setPassword(password);
+                            RequestParams params = new RequestParams();
+                            params.put("username",userName);
+                            params.put("password", password);
+                            AsyncHttpClient client = new AsyncHttpClient();
+                            client.post("http://"+ipAddress+"/backend/register",
+                                    params, new AsyncHttpResponseHandler() {
+                                        @Override
+                                        public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                            Toast.makeText(MainActivity.this,
+                                                    "Đăng nhập thành công",
+                                                    Toast.LENGTH_LONG).show();
+                                            item.setTitle(userName);
+                                            dialog.hide();
+                                        }
+
+                                        @Override
+                                        public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
+                                            dialog.hide();
+
+                                            if (statusCode == 401) {
+                                                Toast.makeText(MainActivity.this,
+                                                        "Sai tên đăng nhập hoặc mật khẩu",
+                                                        Toast.LENGTH_LONG).show();
+                                            }
+
+                                            else {
+                                                Toast.makeText(
+                                                        MainActivity.this,
+                                                        "Lỗi chưa xác định"
+                                                        , Toast.LENGTH_LONG)
+                                                        .show();
+                                            }
+                                        }
+
+                                    });
+                        }
+                    }
+
+                });
+                dialog.show();
+                break;
+            }
+
 
         }
         return super.onOptionsItemSelected(item);

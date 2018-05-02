@@ -51,7 +51,7 @@ public class ChapterFragment extends Fragment  {
     public ArrayList<String> listChapter = new ArrayList<>() ;
     public ArrayList<String> listid = new ArrayList<>() ;
     public ArrayAdapter<String> adapter;
-    public String idchapter;
+    public String chapterNO;
     public String idBook;
 
     @Override
@@ -67,10 +67,10 @@ public class ChapterFragment extends Fragment  {
         lvChapter.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                idchapter = listid.get(position).toString();
+                chapterNO = listid.get(position).toString();
 
                 Intent intent = new Intent(getActivity(), DocTruyenActivity.class);
-                intent.putExtra("idchapter",idchapter);
+                intent.putExtra("chapterNO",chapterNO);
                 intent.putExtra("idBook",idBook);
                 startActivity(intent);
 
