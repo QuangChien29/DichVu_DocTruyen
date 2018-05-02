@@ -4,10 +4,11 @@
     android:orientation="vertical"
     android:layout_height="wrap_content"
     android:padding="10dp">
+
     <TextView
+        android:id="@+id/tvChapterName"
         android:layout_width="wrap_content"
-        android:text="Chapter name"
-        android:textColor="#000"
         android:layout_height="wrap_content"
-        android:id="@+id/tvChapterName"/>
+        android:text="Chapter name"
+        android:textColor="@android:color/black" />
 </RelativeLayout>

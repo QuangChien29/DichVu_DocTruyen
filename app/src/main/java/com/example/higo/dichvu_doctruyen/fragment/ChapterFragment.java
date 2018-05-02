@@ -116,6 +116,8 @@ public class ChapterFragment extends Fragment  {
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
             //Toast.makeText(getContext(),s,Toast.LENGTH_LONG).show();
+            listChapter.clear();
+            listid.clear();
             try {
                 JSONArray array = new JSONArray(s);
                 for (int i = 0 ; i< array.length();i++){
@@ -124,7 +126,7 @@ public class ChapterFragment extends Fragment  {
                     chapter.setChapterName(object.getString("name"));
                     //listChapter[listChapter.length]=chapter.getChapterName();
                     listChapter.add(chapter.getChapterName());
-                    listid.add(object.getString("id"));
+                    listid.add(object.getString("chapterNO"));
                 }
                 adapter.notifyDataSetChanged();
 

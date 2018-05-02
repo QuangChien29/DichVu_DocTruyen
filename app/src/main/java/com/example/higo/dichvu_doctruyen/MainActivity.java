@@ -1,5 +1,6 @@
 package com.example.higo.dichvu_doctruyen;
 
+import android.app.Application;
 import android.app.Dialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         switch (item.getItemId()){
             case R.id.menuLogin: {
                 final Dialog dialog = new Dialog(MainActivity.this);
@@ -84,11 +85,11 @@ public class MainActivity extends AppCompatActivity {
                 btnDangNhap.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        String userName = edUsername.getText().toString();
+                        final String userName = edUsername.getText().toString();
                         String password = edPassword.getText().toString();
                         if(userName.equals("") || password.equals(""))
                         {
-                            Toast.makeText(getApplicationContext(),"Hãy nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this,"Hãy nhập đầy đủ thông tin",Toast.LENGTH_SHORT).show();
                         }
                         else
                         {
@@ -96,36 +97,34 @@ public class MainActivity extends AppCompatActivity {
                             user.setUserName(userName);
                             user.setPassword(password);
                             RequestParams params = new RequestParams();
-                            Map<String, String> map = new HashMap<String, String>();
-                            map.put("login", userName); map.put("password", password);
-                            params.put("query", map); params.put("includeUserMiscInfo", "true");
+                            params.put("username",userName);
+                            params.put("password", password);
                             AsyncHttpClient client = new AsyncHttpClient();
-                            client.post("http://192.168.1.110:8080/backend/users",
+                            client.post("http://"+ipAddress+"/backend/login",
                                     params, new AsyncHttpResponseHandler() {
                                         @Override
                                         public void onSuccess(int statusCode, Header[] headers, byte[] responseBody) {
+                                            Toast.makeText(MainActivity.this,
+                                                    "Đăng nhập thành công",
+                                                    Toast.LENGTH_LONG).show();
+                                            item.setTitle(userName);
                                             dialog.hide();
                                         }
 
                                         @Override
                                         public void onFailure(int statusCode, Header[] headers, byte[] responseBody, Throwable error) {
                                             dialog.hide();
-                                            if (statusCode == 404) {
-                                                Toast.makeText(MainActivity.this,
-                                                        "Requested resource not found",
-                                                        Toast.LENGTH_LONG).show();
-                                            }
 
-                                            else if (statusCode == 500) {
+                                            if (statusCode == 401) {
                                                 Toast.makeText(MainActivity.this,
-                                                        "Something went wrong at server end",
+                                                        "Sai tên đăng nhập hoặc mật khẩu",
                                                         Toast.LENGTH_LONG).show();
                                             }
 
                                             else {
                                                 Toast.makeText(
                                                         MainActivity.this,
-                                                        "Loi chưa xác định"
+                                                        "Lỗi chưa xác định"
                                                         , Toast.LENGTH_LONG)
                                                         .show();
                                             }
@@ -140,6 +139,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             }
+
         }
         return super.onOptionsItemSelected(item);
     }

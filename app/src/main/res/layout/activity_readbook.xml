@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#E3F2FD"
+    android:background="#FFECB3"
     android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="460dp"
+        android:layout_height="461dp"
         android:layout_marginBottom="8dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -24,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tên Chương"
+                android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -43,23 +44,23 @@
 
         <ImageButton
             android:id="@+id/btnNextChapter"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="62dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="83dp"
-            android:background="#E3F2FD"
+            android:layout_marginEnd="94dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_keyboard_arrow_right_black_48dp" />
 
         <ImageButton
             android:id="@+id/btnBackChapter"
+            style="@style/Widget.AppCompat.Button.Borderless"
             android:layout_width="60dp"
-            android:layout_height="match_parent"
+            android:layout_height="29dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="95dp"
-            android:background="#E3F2FD"
+            android:layout_marginStart="93dp"
             android:scaleType="centerCrop"
             app:srcCompat="@drawable/ic_keyboard_arrow_left_black_48dp" />
 

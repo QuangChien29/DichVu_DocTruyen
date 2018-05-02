@@ -35,6 +35,7 @@ public class ReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.activity_review_fragment,null);
         tvReview = (TextView) view.findViewById(R.id.tvReview);
+        tvReview.setText("Đang tải....");
         String description = getArguments().getString("description");
         tvReview.setText(description);
         return view;

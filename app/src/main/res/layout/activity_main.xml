@@ -4,26 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e3f2fd"
+    android:background="#FFECB3"
     android:orientation="vertical"
     tools:context="com.example.higo.dichvu_doctruyen.MainActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:text="   DANH SÁCH TRUYỆN"
-        android:textColor="@android:color/background_dark"
-        android:textSize="18sp"
-        android:textStyle="bold" />
-
     <ListView
         android:id="@+id/lvBook"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp">
 
     </ListView>
 

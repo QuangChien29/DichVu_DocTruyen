@@ -40,9 +40,9 @@ import static com.example.higo.dichvu_doctruyen.MainActivity.ipAddress;
 public class ReviewActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private ViewPager viewPager;
-    private TextView tvTenTruyen;
+    private TextView tvTenTruyen,tvSoChuong;
     private ImageView imgReview;
-    private String idBook;
+    private String idBook="";
     Book book = new Book();
     Button btnDocTruyen;
     ReviewFragment reviewFragment;
@@ -79,6 +79,7 @@ public class ReviewActivity extends AppCompatActivity {
         commentFragment = new CommentFragment();
 
         tvTenTruyen =  findViewById(R.id.tvTenTruyen);
+        tvSoChuong =  findViewById(R.id.tvSoChuong);
         imgReview =  findViewById(R.id.imgReview);
         btnDocTruyen =  findViewById(R.id.btnDocTruyen);
 
@@ -104,10 +105,10 @@ public class ReviewActivity extends AppCompatActivity {
     private void setupViewPage(ViewPager viewPager) {
             TabAdapter adapter = new TabAdapter(getSupportFragmentManager());
             //chapterFragment.setDataForListView(idBook);
-
             adapter.addFragment(reviewFragment, "Giới thiệu");
             adapter.addFragment(chapterFragment, "Danh sách chương");
             adapter.addFragment(commentFragment,"Đánh giá");
+
 
             viewPager.setAdapter(adapter);
         }
@@ -147,15 +148,17 @@ public class ReviewActivity extends AppCompatActivity {
                 //book.setAuthor(object.getString("description"));
                 book.setImgURL(object.getString("imgSrc"));
                 book.setDescription(object.getString("description"));
+                book.setSumChapter(object.getString("numOfChapter"));
                 tvTenTruyen.setText(book.getName());
-                //tvTacGia.setText(book.getAuthor());
+                tvSoChuong.setText("Tổng chương : " +book.getSumChapter());
                 Picasso.with(ReviewActivity.this).load(book.getImgURL()).into(imgReview);
-                reviewFragment.setTextReview(book.getDescription());
+
                 Bundle bundle = new Bundle();
-                bundle.putString("description",object.getString("description"));
+                bundle.putString("description",book.getDescription());
                 reviewFragment.setArguments(bundle);
 
-                //Toast.makeText(ReviewActivity.this,book.getName(),Toast.LENGTH_LONG).show();
+                //Toast.makeText(ReviewActivity.this,book.getDescription(),Toast.LENGTH_LONG).show();
+                reviewFragment.setTextReview(object.getString("description"));
             } catch (JSONException e) {
                 e.printStackTrace();
             }
