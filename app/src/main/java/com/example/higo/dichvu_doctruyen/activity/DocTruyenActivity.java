@@ -172,7 +172,7 @@ public class DocTruyenActivity extends AppCompatActivity {
         textSize = sharedPreferences.getInt("textSize",18);
         tvContent.setTextSize(textSize);
         final AssetManager assetManager = getAssets();
-        String fontChu = sharedPreferences.getString("fontChu","");
+        String fontChu = sharedPreferences.getString("fontChu","ACaslonPro-Bold.otf");
         Typeface typeface = Typeface.createFromAsset(assetManager,"fonts/"+fontChu);
         tvContent.setTypeface(typeface);
     }
