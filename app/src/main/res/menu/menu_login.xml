@@ -13,8 +13,5 @@
     <item android:title="Đăng Nhập"
         android:id="@+id/menuLogin"></item>
 
-    <item android:title="Đăng Ký"
-        android:id="@+id/menuDK"></item>
-
 
 </menu>
